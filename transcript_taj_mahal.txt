@@ -1,0 +1,208 @@
+jar2262@beijing /home/jar2262/AdvDatabases $ bash run.sh ghTYY7wD6LpyxUO9VRR7e1f98WFhHWYERMcw87aQTqQ 0.9 'taj mahal'
+Parameters:
+Client key         = ghTYY7wD6LpyxUO9VRR7e1f98WFhHWYERMcw87aQTqQ
+Query              = taj mahal
+Required Precision = 0.9
+URL: https://api.datamarket.azure.com/Bing/Search/Web?$top=10&$format=Atom&Query=%27taj+mahal%27
+Total no of results : 10
+Bing Search Results:
+======================
+Result 1
+[
+ URL: http://en.wikipedia.org/wiki/Taj_Mahal
+ Title: Taj Mahal - Wikipedia, the free encyclopedia
+ Summary: The Taj Mahal is a white marble mausoleum located on the southern bank of the Yamuna River in the Indian city of Agra. It was commissioned in 1632 by the Mughal ...
+]
+
+Relevant (Y/N)?n
+=======================
+Result 2
+[
+ URL: http://www.history.com/topics/taj-mahal
+ Title: The Taj Mahal - Facts & Summary - HISTORY.com
+ Summary: Find out more about the history of The Taj Mahal, including videos, interesting articles, pictures, historical features and more. Get all the facts on HISTORY.com
+]
+
+Relevant (Y/N)?n
+=======================
+Result 3
+[
+ URL: http://www.trumptaj.com/
+ Title: Atlantic City New Jersey Casino Hotels | Trump Taj Mahal ...
+ Summary: For five star Atlantic City Casino hotels, Trump Taj Mahal Casino Hotel offers restaurants, nightlife and a casino floor you can't resist. Explore our Atlantic City ...
+]
+
+Relevant (Y/N)?n
+=======================
+Result 4
+[
+ URL: http://www.tajmahal.com/
+ Title: Taj Mahal India
+ Summary: Taj Mahal, Taj Mahal history, taj mahal location, pictures, information, taj mahal tours, tickets and packages. Taj Mahal India
+]
+
+Relevant (Y/N)?n
+=======================
+Result 5
+[
+ URL: http://tajmahal.gov.in/
+ Title: Welcome To Official WebSite of Taj Mahal-U.P.Tourism
+ Summary: Official website by Department of Tourism, Government of Uttar Pradesh. Details about Taj Mahal, ticketing, tours, and tourist information.
+]
+
+Relevant (Y/N)?n
+=======================
+Result 6
+[
+ URL: http://www.tajblues.com/
+ Title: An International Treasure - Taj Mahal
+ Summary: Official site includes news, tour schedule, discography, audio/video and pictures.
+]
+
+Relevant (Y/N)?y
+=======================
+Result 7
+[
+ URL: http://www.allmusic.com/artist/taj-mahal-mn0000790604
+ Title: Taj Mahal | Biography, Albums, & Streaming Radio | AllMusic
+ Summary: Find Taj Mahal bio, music, credits, awards, & streaming radio on AllMusic - A guitarist and singer/songwriter who took an…
+]
+
+Relevant (Y/N)?y
+=======================
+Result 8
+[
+ URL: http://www.last.fm/music/Taj+Mahal
+ Title: Taj Mahal — Free listening, videos, concerts, stats and ...
+ Summary: Taj Mahal (born Henry Saint Clair Fredericks in New York City on May 17, 1942) is an American Grammy Award-winning blues musician who incorporates elements of world ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 9
+[
+ URL: http://www.amazon.com/Taj-Mahal/e/B000APY7PY
+ Title: Amazon.com: Taj Mahal: Songs, Albums, Pictures, Bios
+ Summary: Visit Amazon.com's Taj Mahal Store to shop for Taj Mahal albums (CD, MP3, Vinyl), concert tickets, and other Taj Mahal-related products (DVDs, Books, T-shirts). Also ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 10
+[
+ URL: http://en.wikipedia.org/wiki/Taj_Mahal_(musician)
+ Title: Taj Mahal (musician) - Wikipedia, the free encyclopedia
+ Summary: Henry Saint Clair Fredericks (born May 17, 1942), who uses the stage name Taj Mahal, is an American blues musician. He often incorporates elements of world music into ...
+]
+
+Relevant (Y/N)?y
+=======================
+======================
+FEEDBACK SUMMARY
+Query: taj mahal
+Precision: 0.5
+Still below the desired precision of : 0.9
+Augmented query: taj mahal albums musician
+Parameters:
+Client key         = ghTYY7wD6LpyxUO9VRR7e1f98WFhHWYERMcw87aQTqQ
+Query              = taj mahal albums musician
+Required Precision = 0.9
+URL: https://api.datamarket.azure.com/Bing/Search/Web?$top=10&$format=Atom&Query=%27taj+mahal+albums+musician%27
+Total no of results : 10
+Bing Search Results:
+======================
+Result 1
+[
+ URL: http://en.wikipedia.org/wiki/Taj_Mahal_(musician)
+ Title: Taj Mahal (musician) - Wikipedia, the free encyclopedia
+ Summary: Henry Saint Clair Fredericks (born May 17, 1942), who uses the stage name Taj Mahal, is an American blues musician. He often incorporates elements of world music into ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 2
+[
+ URL: http://www.allmusic.com/artist/taj-mahal-mn0000790604/discography
+ Title: Taj Mahal | Album Discography | AllMusic
+ Summary: Find Taj Mahal discography, albums and singles on AllMusic
+]
+
+Relevant (Y/N)?y
+=======================
+Result 3
+[
+ URL: http://www.amazon.com/Taj-Mahal/e/B000APY7PY
+ Title: Amazon.com: Taj Mahal: Songs, Albums, Pictures, Bios
+ Summary: Visit Amazon.com's Taj Mahal Store to shop for Taj Mahal albums (CD, MP3, Vinyl), concert tickets, and other Taj Mahal-related products (DVDs, Books, T-shirts). Also ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 4
+[
+ URL: http://www.naturalgeographicmagazine.com/q/Taj_Mahal_(musician)_live_albums
+ Title: Taj Mahal (musician) live albums
+ Summary: The Real Thing (Taj Mahal album) The Real Thing is a 1971 live album by Taj Mahal. It was recorded on February 13, 1971 at the Fillmore East in New York City and ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 5
+[
+ URL: http://www.discogs.com/artist/15158-Taj-Mahal
+ Title: Taj Mahal Discography at Discogs
+ Summary: Complete your Taj Mahal record collection. Discover Taj Mahal's full discography. Shop new and used Vinyl and CDs.
+]
+
+Relevant (Y/N)?y
+=======================
+Result 6
+[
+ URL: http://www.tajblues.com/discography/
+ Title: Discography - Taj Mahal
+ Summary: Rhino Records’ Hippity Hop collection features hip-hop music for a younger audience. The album ... The latest in musical explorations for The Taj Mahal Trio ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 7
+[
+ URL: https://myspace.com/tajblues
+ Title: Taj Mahal | Listen and Stream Free Music, Albums, New ...
+ Summary: Taj Mahal's profile including the latest music, albums, songs, music videos and more updates.
+]
+
+Relevant (Y/N)?y
+=======================
+Result 8
+[
+ URL: http://www.discogs.com/Taj-Mahal-Dancing-The-Blues/release/7554815
+ Title: Taj Mahal - Dancing The Blues (CD, Album) at Discogs
+ Summary: Find a Taj Mahal - Dancing The Blues first pressing or reissue. Complete your Taj Mahal collection. Shop Vinyl and CDs.
+]
+
+Relevant (Y/N)?y
+=======================
+Result 9
+[
+ URL: http://www.allmusic.com/artist/taj-mahal-mn0000790604
+ Title: Taj Mahal | Biography, Albums, & Streaming Radio | AllMusic
+ Summary: Find Taj Mahal bio, music, credits, awards, & streaming radio on AllMusic - A guitarist and singer/songwriter who took an…
+]
+
+Relevant (Y/N)?y
+=======================
+Result 10
+[
+ URL: http://www.amazon.com/Taj-Mahal-Vinyl-TAJ-MAHAL/dp/B000B6TR9I
+ Title: TAJ MAHAL - Taj Mahal [Vinyl] - Amazon.com Music
+ Summary: It's hard to believe that 40 years have elapsed since Taj Mahal recorded his self-titled album. I can honestly say that Taj's debut album DID change my life because ...
+]
+
+Relevant (Y/N)?y
+=======================
+======================
+FEEDBACK SUMMARY
+Query: taj mahal albums musician
+Precision: 1.0
+Desired precision reached, done

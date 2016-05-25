@@ -1,0 +1,208 @@
+jar2262@beijing /home/jar2262/AdvDatabases $ bash run.sh ghTYY7wD6LpyxUO9VRR7e1f98WFhHWYERMcw87aQTqQ 0.9 'gates'
+Parameters:
+Client key         = ghTYY7wD6LpyxUO9VRR7e1f98WFhHWYERMcw87aQTqQ
+Query              = gates
+Required Precision = 0.9
+URL: https://api.datamarket.azure.com/Bing/Search/Web?$top=10&$format=Atom&Query=%27gates%27
+Total no of results : 10
+Bing Search Results:
+======================
+Result 1
+[
+ URL: http://www.gates.com/
+ Title: Gates Corporation
+ Summary: Gates Corporation is Powering Progress™ in the Oil & Gas, Energy, Mining, Marine, Agriculture, Transportation and Automotive Industries.
+]
+
+Relevant (Y/N)?n
+=======================
+Result 2
+[
+ URL: http://www.gatecrafters.com/design_your_gates.aspx
+ Title: Driveway Gates | Automatic Gates | Electric Gates
+ Summary: Driveway Gates - Automatic Gates The high-quality driveway gates from GateCrafters.com come in a wide variety of options to ...
+]
+
+Relevant (Y/N)?n
+=======================
+Result 3
+[
+ URL: http://www.gatesbbq.com/
+ Title: Gates Bar B.Q.
+ Summary: With the tantalizing hickory barbecue smell drawing the customer through the ranch-style doors, he is immediately greeted.
+]
+
+Relevant (Y/N)?n
+=======================
+Result 4
+[
+ URL: http://www.amazon.com/s?ie=UTF8&page=1&rh=i%3Aaps%2Ck%3Agates
+ Title: Amazon.com: gates
+ Summary: Product Features Expands to become a 192-inch wall mounted gate or free standing barrier
+]
+
+Relevant (Y/N)?n
+=======================
+Result 5
+[
+ URL: http://en.wikipedia.org/wiki/Bill_Gates
+ Title: Bill Gates - Wikipedia, the free encyclopedia
+ Summary: William Henry "Bill" Gates III (born October 28, 1955) is an American business magnate, philanthropist, investor, computer programmer, and inventor. In 1975, Gates co ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 6
+[
+ URL: https://www.facebook.com/gatesnj
+ Title: gates
+ Summary: gates. 13,913 likes · 194 talking about this. www.gatesnj.com. Facebook logo. Email or Phone: Password: Keep me logged in. Forgot your password? Sign Up. gates
+]
+
+Relevant (Y/N)?n
+=======================
+Result 7
+[
+ URL: http://en.wikipedia.org/wiki/Gates
+ Title: Gates - Wikipedia, the free encyclopedia
+ Summary: Gates may refer to: Contents 1 People 2 Places 3 Art and entertainment 4 See also People Gates (surname) Gates Brown, American baseball player Gates McFadden ...
+]
+
+Relevant (Y/N)?n
+=======================
+Result 8
+[
+ URL: http://www.forbes.com/profile/bill-gates/
+ Title: Bill Gates - Forbes
+ Summary: Forty years ago, when Bill Gates and Paul Allen launched Microsoft, Gates' goal of getting a computer on every person's desk seemed audacious.
+]
+
+Relevant (Y/N)?y
+=======================
+Result 9
+[
+ URL: http://www.gatesfoundation.org/
+ Title: Bill & Melinda Gates Foundation
+ Summary: The Gates Foundation’s effort to eradicate polio offers the chance to protect millions of children from paralysis forever.
+]
+
+Relevant (Y/N)?y
+=======================
+Result 10
+[
+ URL: http://www.amazon.com/b?ie=UTF8&node=166868011
+ Title: Amazon.com: Gates & Doorways: Baby Products
+ Summary: Online shopping for Gates & Doorways from a great selection at Baby Products Store.
+]
+
+Relevant (Y/N)?n
+=======================
+======================
+FEEDBACK SUMMARY
+Query: gates
+Precision: 0.3
+Still below the desired precision of : 0.9
+Augmented query: bill gates foundation
+Parameters:
+Client key         = ghTYY7wD6LpyxUO9VRR7e1f98WFhHWYERMcw87aQTqQ
+Query              = bill gates foundation
+Required Precision = 0.9
+URL: https://api.datamarket.azure.com/Bing/Search/Web?$top=10&$format=Atom&Query=%27bill+gates+foundation%27
+Total no of results : 10
+Bing Search Results:
+======================
+Result 1
+[
+ URL: http://www.gatesfoundation.org/
+ Title: Bill & Melinda Gates Foundation
+ Summary: The Gates Foundation’s effort to eradicate polio offers the chance to protect millions of children from paralysis forever.
+]
+
+Relevant (Y/N)?y
+=======================
+Result 2
+[
+ URL: http://www.gatesfoundation.org/what-we-do
+ Title: What We Do - Bill & Melinda Gates Foundation
+ Summary: At the Bill & Melinda Gates Foundation Visitor Center, you’ll find stories of work that is improving lives, from Seattle to South Africa. Plan a Visit. 440 5th Ave N.
+]
+
+Relevant (Y/N)?y
+=======================
+Result 3
+[
+ URL: http://en.wikipedia.org/wiki/Bill_%26_Melinda_Gates_Foundation
+ Title: Bill & Melinda Gates Foundation - Wikipedia, the free ...
+ Summary: Bill & Melinda Gates Foundation (BMGF or the Gates Foundation) is the largest private foundation in the world, founded by Bill and Melinda Gates. It was launched in ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 4
+[
+ URL: http://www.gatesnotes.com/
+ Title: Home | Bill Gates
+ Summary: The blog of Bill Gates. gates notes. GO. Filter By. Posts. Videos. SORT POSTS BY. All. All ... About Bill. All Posts. Follow. Like. Subscribe. Contact. SHARE ` Like ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 5
+[
+ URL: http://money.cnn.com/2015/09/25/investing/bill-gates-foundation-sues-petrobras/index.html
+ Title: Bill & Melinda Gates Foundation sues Petrobras - Sep. 25, 2015
+ Summary: The Gates Foundation is seeking "damages" related to the Trust's investment in Petrobras, the government-run company where a massive money laundering case ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 6
+[
+ URL: http://www.seattletimes.com/seattle-news/education/gates-foundation-to-keep-pushing-on-teacher-quality/
+ Title: Gates Foundation to keep pushing for teacher quality | The ...
+ Summary: Bill and Melinda Gates are shown Wednesday at the Gates Foundation-sponsored education conference in Bellevue. (Ellen M. Banner/The Seattle Times)
+]
+
+Relevant (Y/N)?y
+=======================
+Result 7
+[
+ URL: http://www.businessinsider.com/gates-foundation-announces-unlimited-leave-policies-2015-10
+ Title: Bill Gates is now offering his foundation employees a full ...
+ Summary: Employees at the Bill & Melinda Gates Foundation, the largest private foundation in the world, will be able to enjoy up to one year of paid time with their ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 8
+[
+ URL: http://www.huffingtonpost.com/news/bill-gates-foundation/
+ Title: Bill Gates Foundation - The Huffington Post
+ Summary: Saving millions of lives from AIDS is most certainly in our reach, according to Bill Gates -- we just have to up the resources aimed at ending the vir...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 9
+[
+ URL: http://finance.yahoo.com/news/bill-melinda-gates-foundation-joins-194115637.html
+ Title: The Bill & Melinda Gates Foundation joins Netflix, Adobe ...
+ Summary: Melinda and Bill Gates, cochairs of the Gates Foundation and parents of three kids. Employees at the Bill & Melinda Gates Foundation, the largest private ...
+]
+
+Relevant (Y/N)?y
+=======================
+Result 10
+[
+ URL: http://careers.gatesfoundation.org/
+ Title: Explore Gates Foundation Jobs | Investigate Non-Profit ...
+ Summary: Explore Gates Foundation Jobs. Investigate non-profit jobs and pursue advocacy jobs, global health jobs, sustainable development jobs, and more.
+]
+
+Relevant (Y/N)?y
+=======================
+======================
+FEEDBACK SUMMARY
+Query: bill gates foundation
+Precision: 1.0
+Desired precision reached, done

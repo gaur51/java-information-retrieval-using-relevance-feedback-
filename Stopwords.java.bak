@@ -1,0 +1,80 @@
+    public List<Result> cleanDocuments (List<Result> initdocs) {
+        if (stop == null) {
+            loadStopwords();
+        }
+
+        //stoprmd contains list of results after stop word removal and stemmed contains list of results after stemming
+        List<Result> stoprmd = null;
+        List<Result> stemmed;
+        //List<Result> stoprmd = (List)new ArrayList<Result>();
+        //List<Result> stemmed = (List)new ArrayList<Result>();
+        int i, fl;
+        for (i = 0; i < 10; i++) {
+
+            String tit = initdocs.get(i).title;
+            String ur = initdocs.get(i).url;
+            String des =  initdocs.get(i).description;
+
+            String restitle = "";
+            String resUrl = "";
+            String resdescription = "";
+            String stemres = "";
+            String arr[] = des.split(" ");
+            //Stop word removal on description
+            for (String ss : arr) {
+                fl = 1;
+                for (String jj : stop) {
+                    if (ss.equals(jj)) {
+                        fl = 0;
+                        break;
+                    }
+                    if (fl == 1) {
+                        resdescription += ss;
+                        resdescription += " ";
+                    }
+                }
+            }
+            String arrt[] = tit.split(" ");
+            //Stopword removal on title
+            for (String ss1 : arrt) {
+                fl = 1;
+                for (String jj : stop) {
+                    if (ss1.equals(jj)) {
+                        fl = 0;
+                        break;
+                    }
+                    if (fl == 1) {
+                        restitle += ss1;
+                        restitle    += " ";
+                    }
+                }
+            }
+            //No stopword removal needed for Url
+
+            //Now we add this to the list of results after stop word removal
+            stoprmd.add(new Result(
+                            restitle,
+                            ur,
+                            resdescription
+                        ));
+
+
+            //Code for stemming (this function stripAffixes is in file Porter.java) ,currently commented out so that we can test stop word removal first
+
+            /*      String arr2[]= resdescription.split(" ");
+
+                          for(String s: arr2){
+                         String str1= s.stripAffixes(s);
+                         stemres+=str1;
+                         stemres+=" ";
+                    }
+
+                   stemmed.add(new Result(
+                          tit,
+                          ur,
+                          stemres
+                          ));*/
+        }
+        //Ideally we need to return the stemmed result list but here for testing we are returning the stopword removed result list
+        return stoprmd;
+    }

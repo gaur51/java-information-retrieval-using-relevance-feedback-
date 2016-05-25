@@ -1,0 +1,214 @@
+import java.util.*;
+
+public class QueryAdjuster {
+    private int numAdditionalTerms;
+
+
+    public static void main(String[] args) {
+        /*
+        QueryAdjuster queryAdjuster = new QueryAdjuster();
+        Query query = new Query("gates");
+        List<Result> relevantResults = new ArrayList<Result>();
+        List<Result> irrelevantResults = new ArrayList<Result>();
+        relevantResults.add(new Result("Who We Are - Bill & Melinda Gates Foundation", "http://www.gatesfoundation.org/who-we-are", "melinda gates “As a dad, I work to protect my kids ... letter from bill and melinda gates Read the philosophy behind the philanthropy's"));
+        irrelevantResults.add(new Result("Gates Corporation", "http://www.gates.com", "Gates Corporation is Powering Progress™ in the Oil & Gas, Energy, Mining, Marine, Agriculture, Transportation and Automotive Industries."));
+        Query newQuery = queryAdjuster.adjustQuery(query, relevantResults, irrelevantResults);
+
+        System.out.println("----\nNew Query: " + newQuery + "\n---");
+        */
+
+        QueryAdjuster queryAdjuster = new QueryAdjuster();
+        Query query = new Query("musk");
+        List<Result> relevantResults = new ArrayList<Result>();
+        List<Result> irrelevantResults = new ArrayList<Result>();
+        relevantResults.add(new Result("Elon Musk - Wikipedia, the free encyclopedia", "http://www.example.com", "Elon Reeve Musk (born June 28, 1971) is a South African-born Canadian-American business magnate, engineer, inventor and investor. [14] He is the CEO and CTO of SpaceX ..."));
+
+        irrelevantResults.add(new Result("Musk - Wikipedia, the free encyclopedia", "http://www.example.com", "Musk is a class of aromatic substances commonly used as base notes in perfumery. They include glandular secretions from animals such as the musk deer, numerous plants ..."));
+        irrelevantResults.add(new Result("Musk | Define Musk at Dictionary.com", "http://www.example.com", "noun 1. a substance secreted in a glandular sac under the skin of the abdomen of the male musk deer, having a strong odor, and used in perfumery. 2. an artificial ..."));
+        
+
+        relevantResults.add(new Result("Elon Musk (@elonmusk) | Twitter", "http://www.example.com/", "Elon Musk-backed SolarCity claims to have built industry's most efficient solar panel http://www. theverge.com/2015/10/2/9439 173/elon-musk-backed-solarcity-claims-to ..."));
+        irrelevantResults.add(new Result("MUSK", "http://www.example.com/", "MUSK are Lennart Döring and Gerald Zollner, who met in Berlin's nightlife back in 2009. Soon after they went through the history of dancemusic, ..."));
+        irrelevantResults.add(new Result("Musk | Definition of musk by Merriam-Webster", "http://www.example.com/", "Definition of MUSK for Kids: a strong-smelling material that is used in perfumes and is obtained from a gland of an Asian deer (musk deer) or is prepared artificially"));
+        irrelevantResults.add(new Result("Musk perfume ingredient, Musk fragrance and essential oils ...", "http://www.example.com/", "Musk is a whole class of fragrant substances used as base notes in perfumery. This wonderful animalistic note creates a groundwork on which the rest of the aromatic ..."));
+        irrelevantResults.add(new Result("Amazon.com: perfume musk: Beauty", "http://www.example.com/", "ASDM Beverly Hills Egyptian Musk, A Rich, Egyptian Musk with Precious Wood Blends and Floral Top Note., 0.5 Ounce"));
+        relevantResults.add(new Result("Elon Musk: “I Definitely Don’t Want to Live Forever ...", "http://www.example.com/", "One futuristic interest SpaceX and Tesla C.E.O. Elon Musk doesn’t share with some of his fellow Silicon Valley titans? The idea that extending life is an obviously ..."));
+        relevantResults.add(new Result("Elon Musk Tells Tesla Competitors to Bring It On", "http://www.example.com/", "When asked by Børsen how he feels about taking on auto and energy industry giants, Musk acknowledged that it’s challenging, yet pointed to how widely his car ..."));
+
+
+        Query newQuery = queryAdjuster.adjustQuery(query, relevantResults, irrelevantResults);
+
+        System.out.println("----\nNew Query: " + newQuery + "\n---");
+    }
+
+
+    public QueryAdjuster() {
+        // Use default number of additional terms.
+        this(2);
+    }
+
+
+    public QueryAdjuster(int numAdditionalTerms) {
+        this.numAdditionalTerms = numAdditionalTerms;
+    }
+
+
+    Query adjustQuery(Query oldQuery, List<Result> relevantResults, List<Result> irrelevantResults) {
+        // TODO: Implement this method
+
+        Stopwords stopwords = new Stopwords();
+
+        SortedSet<String> tokenSet = new TreeSet<String>();
+        tokenSet.addAll(getAllCleanTokens(relevantResults));
+        tokenSet.addAll(getAllCleanTokens(irrelevantResults));
+
+        Map<String, Integer> tokenToIndex = Utils.tokenToIndexMap(tokenSet);
+        ArrayList<String> indexToToken = Utils.indexToTokenMap(tokenSet);
+        double[] weights = getWeights(relevantResults, irrelevantResults, tokenToIndex, indexToToken);
+
+        // Save the tokens and weights as a list of comparable TokenWeightPairs and sort this list based on the weight in descending order.
+        ArrayList<TokenWeightPair> tokenWeightPairs = new ArrayList<TokenWeightPair>();
+        for (int i = 0; i < weights.length; i++) {
+            tokenWeightPairs.add(new TokenWeightPair(indexToToken.get(i), weights[i]));
+        }
+        Collections.sort(tokenWeightPairs, Collections.reverseOrder());
+
+        // Print for debugging.
+        // TODO: remove this before submitting.
+        System.out.println("Token dictionary, in alphabetical order:\n" + indexToToken + "\n");
+        System.out.println("Weights: " + Arrays.toString(weights) + "\n");
+        System.out.println("Terms sorted by weight: " + tokenWeightPairs);
+
+        Query newQuery = new Query(oldQuery);
+
+        // Add up to numAdditionalTerms terms to new query. Don't add terms with negative weight.
+        int numTermsAdded = 0;
+        for (TokenWeightPair tokenWeightPair : tokenWeightPairs) {
+            if (numTermsAdded == numAdditionalTerms || tokenWeightPair.weight <= 0) {
+                break;
+            }
+            if (!newQuery.contains(tokenWeightPair.token)) {
+                newQuery.add(tokenWeightPair.token);
+                numTermsAdded++;
+            }
+        }
+
+        // Put query into approximately best possible query order.
+        newQuery = getBestQueryOrdering(newQuery, relevantResults, irrelevantResults);
+
+        return newQuery;
+    }
+
+
+    private LinkedHashSet<String> getAllTokens(List<Result> resultList) {
+        LinkedHashSet<String> allWords = new LinkedHashSet<String>();
+        for (Result result : resultList) {
+            allWords.addAll(result.titleTokens);
+            allWords.addAll(result.descriptionTokens);
+        }
+        return allWords;
+    }
+
+    private LinkedHashSet<String> getAllCleanTokens(List<Result> resultList) {
+        LinkedHashSet<String> allWords = new LinkedHashSet<String>();
+        for (Result result : resultList) {
+            allWords.addAll(result.titleTokensWithoutStopwords);
+            allWords.addAll(result.descriptionTokensWithoutStopwords);
+        }
+        return allWords;
+    }
+
+
+    // tokenToIndex and indexToToken can be obtained by calling the relevant methods in the Utils class.
+    private double[] getWeights(List<Result> relevantResults, List<Result> irrelevantResults, Map<String, Integer> tokenToIndex, List<String> indexToToken) {
+        double[] weights = new double[indexToToken.size()];
+
+        final double TITLE_WEIGHT = 1.2;
+        final double DESCRIPTION_WEIGHT = 1.0;
+
+        // Relevant results.
+        for (Result result : relevantResults) {
+            // We weigh the increment so that irrelevant and relevant documents carry the same weight.
+            for (String token : result.titleTokensWithoutStopwords) {
+                weights[tokenToIndex.get(token)] += TITLE_WEIGHT / (result.titleTokensWithoutStopwords.size() + result.descriptionTokensWithoutStopwords.size()) / relevantResults.size();
+            }
+            for (String token : result.descriptionTokensWithoutStopwords) {
+                weights[tokenToIndex.get(token)] += DESCRIPTION_WEIGHT / (result.titleTokensWithoutStopwords.size() + result.descriptionTokensWithoutStopwords.size()) / relevantResults.size();
+            }
+        }
+        // Irrelevant results.
+        for (Result result : irrelevantResults) {
+            // We weigh the increment so that irrelevant and relevant documents carry the same weight.
+            for (String token : result.titleTokensWithoutStopwords) {
+                weights[tokenToIndex.get(token)] -= TITLE_WEIGHT / (result.titleTokensWithoutStopwords.size() + result.descriptionTokensWithoutStopwords.size()) / irrelevantResults.size();
+            }
+            for (String token : result.descriptionTokensWithoutStopwords) {
+                weights[tokenToIndex.get(token)] -= DESCRIPTION_WEIGHT / (result.titleTokensWithoutStopwords.size() + result.descriptionTokensWithoutStopwords.size()) / irrelevantResults.size();
+            }
+        }
+        return weights;
+    }
+
+
+    // tokenToIndex and indexToToken can be obtained by calling the relevant methods in the Utils class.
+    private Query getBestQueryOrdering(Query disorderedQuery, List<Result> relevantResults, List<Result> irrelevantResults) {
+        // We use a LinkedHashSet to preserve the insertion ordering of the tokens. This ordering will later be used when deciding the query order of the terms.
+        LinkedHashSet<String> relevantTokenSet = getAllTokens(relevantResults);
+        // Add any missing query word just in case.
+        relevantTokenSet.addAll(disorderedQuery);
+
+        System.out.println(relevantTokenSet);
+        Map<String, Integer> tokenToIndex = Utils.tokenToIndexMap(relevantTokenSet);
+
+        Comparator<String> tokenComparator = new Comparator<String>() {
+            @Override
+            public int compare(final String s1, final String s2) {
+                // let your comparator look up your car's color in the custom order
+                Integer i1 = tokenToIndex.get(s1);
+                Integer i2 = tokenToIndex.get(s2);
+
+                if (i1 == null) {
+                    i1 = 1000000;
+                }
+                if (i2 == null) {
+                    i2 = 1000000;
+                }
+
+                return i1.compareTo(i2);
+            }
+        };
+
+        System.out.println("Disordered query: " + disorderedQuery);
+        for (String token : disorderedQuery) {
+            System.out.println("Query token: " + token + " Token index:" + tokenToIndex.get(token));
+        }
+        Collections.sort(disorderedQuery, tokenComparator);
+        System.out.println("Ordered query: " + disorderedQuery);
+
+        return disorderedQuery;
+    }
+}
+
+
+class TokenWeightPair implements Comparable<TokenWeightPair> {
+    String token;
+    Double weight;
+
+
+    public TokenWeightPair(String token, Double weight) {
+        this.token = token;
+        this.weight = weight;
+    }
+
+
+    public String toString() {
+        return token + " " + weight;
+    }
+
+
+    public int compareTo(TokenWeightPair b) {
+        // Sort by weight. If there's a tie, sort by word length.
+        return weight.compareTo(b.weight) != 0 ? weight.compareTo(b.weight) : Integer.compare(token.length(), b.token.length());
+    }
+
+}
